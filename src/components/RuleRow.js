@@ -1,8 +1,8 @@
 import React from 'react';
 import './RuleRow.scss';
 
-function RuleRow({ doScore, name, score, description }) {
-  const disabled = score !== undefined;
+function RuleRow({ doScore, name, score, description, rolling }) {
+  const disabled = score !== undefined || rolling;
 
   return (
     <tr

@@ -5,7 +5,7 @@ import "./Game.scss";
 import ScoreTable from "./ScoreTable";
 
 const NUM_DICE = 5;
-const NUM_ROLLS = 2;
+const NUM_ROLLS = 3;
 
 function Game() {
   const [gameState, setGameState] = useState({
@@ -51,6 +51,10 @@ function Game() {
     }));
     setTimeout(roll, 1000);
   }
+
+  useEffect(() => {
+   animateRoll()
+  }, [counter])
 
   function toggleLocked(idx) {
     // toggle whether idx is in locked or not
@@ -154,7 +158,7 @@ function Game() {
           </div>
         </section>
       </header>
-      <ScoreTable doScore={doScore} scores={gameState.scores} />
+      <ScoreTable doScore={doScore} scores={gameState.scores} rolling={gameState.rolling} />
       {counter === 13 ? (
         <button className="reroll" onClick={resetHandler}>
           Start New Game
